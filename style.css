@@ -1,0 +1,73 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: 20px; /* Fonte ampliada para facilitar a leitura */
+    line-height: 1.6;
+    background-color: #F4F4F9;
+    color: #111111; /* Alto contraste entre o texto e o fundo */
+    padding: 20px;
+}
+
+
+header {
+    background-color: #004085; /* Azul escuro para bom contraste com texto branco */
+    color: #FFFFFF;
+    text-align: center;
+    padding: 30px 15px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+}
+
+header h1 {
+    font-size: 36px;
+    margin-bottom: 8px;
+}
+
+header p {
+    font-size: 22px;
+}
+
+.card-dica {
+    background-color: #FFFFFF;
+    border: 3px solid #004085; /* Borda bem definida */
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-dica h2 {
+    color: #004085;
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+.card-dica p {
+    margin-bottom: 10px;
+}
+
+
+.aviso-seguranca {
+    background-color: #FFF3CD;
+    border: 2px solid #856404;
+    color: #856404;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+
+footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 15px;
+    font-size: 18px;
+    color: #555555;
+}
