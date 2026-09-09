@@ -1,4 +1,3 @@
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -13,7 +12,6 @@ body {
     color: #111111; /* Alto contraste entre o texto e o fundo */
     padding: 20px;
 }
-
 
 header {
     background-color: #004085; /* Azul escuro para bom contraste com texto branco */
@@ -33,6 +31,7 @@ header p {
     font-size: 22px;
 }
 
+/* ESTILO DOS CARDS EM ESTADO NORMAL */
 .card-dica {
     background-color: #FFFFFF;
     border: 3px solid #004085; /* Borda bem definida */
@@ -40,6 +39,19 @@ header p {
     padding: 25px;
     margin-bottom: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-dica:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card-link-wrapper {
+    text-decoration: none;
+    color: inherit;
+    display: block;
 }
 
 .card-dica h2 {
@@ -52,6 +64,89 @@ header p {
     margin-bottom: 10px;
 }
 
+/* Botão indicador no card */
+.btn-destaque {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #004085;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 6px;
+}
+
+/* Botão de Fechar (oculto por padrão) */
+.btn-fechar {
+    display: none;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 36px;
+    font-weight: bold;
+    color: #004085;
+    text-decoration: none;
+    line-height: 1;
+}
+
+.btn-fechar:hover {
+    color: #d9534f;
+}
+
+/* FUNDO ESCURO / OVERLAY DE SOBREPOSIÇÃO */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.75); /* Fundo escuro com transparência */
+    backdrop-filter: blur(4px); /* Efeito de desfoque no fundo */
+    z-index: 998;
+}
+
+/* ==========================================
+   ESTADO MODAL (Quando o card é clicado / :target)
+   ========================================== */
+.card-dica:target {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 600px;
+    z-index: 999;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    animation: popup 0.3s ease-out forwards;
+}
+
+/* Exibe o overlay quando qualquer card estiver ativo */
+body:has(.card-dica:target) .modal-overlay {
+    display: block;
+}
+
+/* Exibe o botão de fechar dentro do modal ativo */
+.card-dica:target .btn-fechar {
+    display: block;
+}
+
+/* Oculta a instrução de clique quando estiver em modo modal */
+.card-dica:target .btn-destaque {
+    display: none;
+}
+
+/* Animação de entrada do Modal */
+@keyframes popup {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -45%) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
 
 .aviso-seguranca {
     background-color: #FFF3CD;
@@ -62,7 +157,6 @@ header p {
     margin-top: 30px;
     text-align: center;
 }
-
 
 footer {
     text-align: center;
