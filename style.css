@@ -6,20 +6,103 @@
 
 body {
     font-family: Arial, sans-serif;
-    font-size: 20px; /* Fonte ampliada para facilitar a leitura */
+    font-size: 20px;
     line-height: 1.6;
-    background-color: #F4F4F9;
-    color: #111111; /* Alto contraste entre o texto e o fundo */
+    background-color: #fce4ec; /* Fundo Rosa Suave */
+    color: #4a148c;
     padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+    min-height: 100vh;
 }
 
+/* ==========================================
+   FUNDO ANIMADO 3D (EFEITO ROSA PERSPECTIVA)
+   ========================================== */
+.bg-3d-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: -1;
+    perspective: 1000px;
+    overflow: hidden;
+}
+
+.shape-3d {
+    position: absolute;
+    background: linear-gradient(135deg, #ff69b4, #d81b60);
+    border-radius: 20%;
+    opacity: 0.35;
+    box-shadow: 0 15px 35px rgba(216, 27, 96, 0.4), inset -5px -5px 15px rgba(0, 0, 0, 0.2);
+    animation: float3D 12s infinite ease-in-out alternate;
+}
+
+.shape-3d.circle {
+    border-radius: 50%;
+}
+
+/* Posições e Animações dos Objetos 3D */
+.shape-1 {
+    width: 120px;
+    height: 120px;
+    top: 10%;
+    left: 5%;
+    animation-duration: 10s;
+}
+
+.shape-2 {
+    width: 180px;
+    height: 180px;
+    top: 60%;
+    right: 8%;
+    animation-duration: 14s;
+    animation-delay: -2s;
+}
+
+.shape-3 {
+    width: 90px;
+    height: 90px;
+    bottom: 15%;
+    left: 12%;
+    animation-duration: 9s;
+    animation-delay: -4s;
+}
+
+.shape-4 {
+    width: 150px;
+    height: 150px;
+    top: 25%;
+    right: 25%;
+    animation-duration: 16s;
+    animation-delay: -1s;
+}
+
+@keyframes float3D {
+    0% {
+        transform: translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg);
+    }
+    50% {
+        transform: translate3d(30px, -40px, 100px) rotateX(180deg) rotateY(90deg);
+    }
+    100% {
+        transform: translate3d(-20px, 30px, -50px) rotateX(360deg) rotateY(180deg);
+    }
+}
+
+/* ==========================================
+   CABEÇALHO E ELEMENTOS DA PÁGINA
+   ========================================== */
 header {
-    background-color: #004085; /* Azul escuro para bom contraste com texto branco */
+    background: linear-gradient(135deg, #880e4f, #ad1457); /* Cabeçalho Rosa Escuro */
     color: #FFFFFF;
     text-align: center;
     padding: 30px 15px;
-    border-radius: 12px;
+    border-radius: 16px;
     margin-bottom: 25px;
+    box-shadow: 0 6px 15px rgba(136, 14, 79, 0.3);
 }
 
 header h1 {
@@ -31,21 +114,20 @@ header p {
     font-size: 22px;
 }
 
-/* ESTILO DOS CARDS EM ESTADO NORMAL */
-.card-dica {
-    background-color: #FFFFFF;
-    border: 3px solid #004085; /* Borda bem definida */
-    border-radius: 12px;
+/* ESTILO DOS CARDS E SEÇÕES */
+.card-dica, .conteudo-detalhado {
+    background-color: #ffffff;
+    border: 3px solid #d81b60; /* Borda Rosa Vibrante */
+    border-radius: 16px;
     padding: 25px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: relative;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin-bottom: 25px;
+    box-shadow: 0 8px 16px rgba(216, 27, 96, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card-dica:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(216, 27, 96, 0.25);
 }
 
 .card-link-wrapper {
@@ -54,104 +136,61 @@ header p {
     display: block;
 }
 
-.card-dica h2 {
-    color: #004085;
+.card-dica h2, .conteudo-detalhado h2 {
+    color: #880e4f;
     font-size: 28px;
     margin-bottom: 12px;
 }
 
-.card-dica p {
+.card-dica p, .conteudo-detalhado p {
+    margin-bottom: 15px;
+}
+
+/* Botões */
+.btn-destaque, .btn-voltar {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 12px 24px;
+    background-color: #d81b60;
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-destaque:hover, .btn-voltar:hover {
+    background-color: #ad1457;
+    transform: scale(1.03);
+}
+
+/* FIGURAS E ILUSTRAÇÕES DAS PÁGINAS SECUNDÁRIAS */
+.figura-tema {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 12px;
+    border: 3px solid #f48fb1;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* LISTAS APROFUNDADAS */
+.conteudo-detalhado ul {
+    margin-left: 25px;
+    margin-bottom: 20px;
+}
+
+.conteudo-detalhado li {
     margin-bottom: 10px;
 }
 
-/* Botão indicador no card */
-.btn-destaque {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 8px 16px;
-    background-color: #004085;
-    color: #FFFFFF;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 6px;
-}
-
-/* Botão de Fechar (oculto por padrão) */
-.btn-fechar {
-    display: none;
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 36px;
-    font-weight: bold;
-    color: #004085;
-    text-decoration: none;
-    line-height: 1;
-}
-
-.btn-fechar:hover {
-    color: #d9534f;
-}
-
-/* FUNDO ESCURO / OVERLAY DE SOBREPOSIÇÃO */
-.modal-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.75); /* Fundo escuro com transparência */
-    backdrop-filter: blur(4px); /* Efeito de desfoque no fundo */
-    z-index: 998;
-}
-
-/* ==========================================
-   ESTADO MODAL (Quando o card é clicado / :target)
-   ========================================== */
-.card-dica:target {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90%;
-    max-width: 600px;
-    z-index: 999;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-    animation: popup 0.3s ease-out forwards;
-}
-
-/* Exibe o overlay quando qualquer card estiver ativo */
-body:has(.card-dica:target) .modal-overlay {
-    display: block;
-}
-
-/* Exibe o botão de fechar dentro do modal ativo */
-.card-dica:target .btn-fechar {
-    display: block;
-}
-
-/* Oculta a instrução de clique quando estiver em modo modal */
-.card-dica:target .btn-destaque {
-    display: none;
-}
-
-/* Animação de entrada do Modal */
-@keyframes popup {
-    from {
-        opacity: 0;
-        transform: translate(-50%, -45%) scale(0.95);
-    }
-    to {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
-    }
-}
-
 .aviso-seguranca {
-    background-color: #FFF3CD;
-    border: 2px solid #856404;
-    color: #856404;
+    background-color: #f8bbd0;
+    border: 2px solid #c2185b;
+    color: #880e4f;
     padding: 20px;
     border-radius: 12px;
     margin-top: 30px;
@@ -163,5 +202,6 @@ footer {
     margin-top: 30px;
     padding: 15px;
     font-size: 18px;
-    color: #555555;
+    color: #880e4f;
+    font-weight: bold;
 }
